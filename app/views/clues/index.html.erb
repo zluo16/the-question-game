@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Clues</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Phrase</th>
+      <th>Answer</th>
+      <th>Value</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clues.each do |clue| %>
+      <tr>
+        <td><%= clue.phrase %></td>
+        <td><%= clue.answer %></td>
+        <td><%= clue.value %></td>
+        <td><%= link_to 'Show', clue %></td>
+        <td><%= link_to 'Edit', edit_clue_path(clue) %></td>
+        <td><%= link_to 'Destroy', clue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Clue', new_clue_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  clue: MyString
+  answer: MyString
+  value: 1
+
+two:
+  clue: MyString
+  answer: MyString
+  value: 1
