@@ -16,7 +16,23 @@ res = Net::HTTP.start(url.host, url.port) { | http |
     http.request(req)
 }
 
+class Question
+    attr_accessor :answer, :clue, :value
+    def initialize(answer, clue, value)
+        @answer = answer
+        @clue = clue
+        @value = value
+    end
+end
+
 res_array = JSON.parse(res.body)
-res_unfiltered = res_array.map{ |clue| clue['answer'] }
-puts res_unfiltered
-res_unfiltered.map{ | clue | puts action_controller_helpers.strip_tags(clue) }
+res_unfiltered = res_array.map{ | clue | Question.new(clue['answer'], clue['question'], clue['value']) }
+res_stripped = res_unfiltered.map do | question |
+    question.answer = action_controller_helpers.strip_tags(question.answer).gsub('\\', '').gsub('&amp;', '&')
+    question.clue = action_controller_helpers.strip_tags(question.clue).gsub('\\', '').gsub('&amp;', '&')
+    question
+end
+
+res_stripped.each do | question |
+    Clue.create(phrase: question.clue, answer: question.answer, value: question.value)
+end
