@@ -14,4 +14,4 @@ res = Net::HTTP.start(url.host, url.port) { | http |
     http.request(req)
 }
 
-puts res.body
+res_array.each{ |clue| puts clue['answer'] }
