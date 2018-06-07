@@ -8,10 +8,15 @@
 
 require 'net/http'
 
-url = URI.parse('http://jservice.io/api/random?count=500')
+action_controller_helpers = ActionController::Base.helpers
+
+url = URI.parse('http://jservice.io/api/random?count=100')
 req = Net::HTTP::Get.new(url.to_s)
 res = Net::HTTP.start(url.host, url.port) { | http |
     http.request(req)
 }
 
-res_array.each{ |clue| puts clue['answer'] }
+res_array = JSON.parse(res.body)
+res_unfiltered = res_array.map{ |clue| clue['answer'] }
+puts res_unfiltered
+res_unfiltered.map{ | clue | puts action_controller_helpers.strip_tags(clue) }
