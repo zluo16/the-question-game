@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  resources :games
-  resources :clues
-  resources :questions
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  namespace :api do
+    resources :games
+    resources :clues
+    resources :questions
+  end
+
 end

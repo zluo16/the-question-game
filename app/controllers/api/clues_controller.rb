@@ -1,4 +1,4 @@
-class CluesController < ApplicationController
+class Api::CluesController < ApplicationController
   before_action :set_clue, only: [:show, :edit, :update, :destroy]
 
   # GET /clues
