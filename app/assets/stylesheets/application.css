@@ -15,3 +15,9 @@
  */
 
  @import url("https://cloud.typography.com/6924274/1fUiJU-YZ9thNhzmLrFbjEPf80qQOcYu8/css/fonts.css");
+
+ h2 {
+     font-family: 'Surveyor';
+     font-size: 36px;
+     color: #464748;
+ }
