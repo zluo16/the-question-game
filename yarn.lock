@@ -2,6 +2,12 @@
 # yarn lockfile v1
 
 
+"@plated/plated_kit@^0.0.3":
+  version "0.0.3"
+  resolved "https://npm-proxy.fury.io/1fUiJU-YZ9thNhzmLrFbjEPf80qQOcYu8/plateddev1/~/d/%40plated%2Fplated_kit/%40plated%2Fplated_kit-0.0.3#06545caa22b950e29c799697122be3cfe0e9ef9c"
+  dependencies:
+    uikit "3.0.0-rc.4"
+
 "@rails/webpacker@3.5":
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/@rails/webpacker/-/webpacker-3.5.3.tgz#8be7f4bfb1ce6f00c3456cbbe3dc363ca72bafc8"
@@ -5775,6 +5781,14 @@ uglifyjs-webpack-plugin@^1.2.5:
     uglify-es "^3.3.4"
     webpack-sources "^1.1.0"
     worker-farm "^1.5.2"
+
+uikit@3.0.0-rc.4:
+  version "3.0.0-rc.4"
+  resolved "https://registry.yarnpkg.com/uikit/-/uikit-3.0.0-rc.4.tgz#a2011adf35d195ddc6be3ac4e0674b2feda4a756"
+
+uikit@^3.0.0-rc.5:
+  version "3.0.0-rc.5"
+  resolved "https://registry.yarnpkg.com/uikit/-/uikit-3.0.0-rc.5.tgz#c95fdf703982b8d919ba2db0036cff9fb15098b2"
 
 union-value@^1.0.0:
   version "1.0.0"

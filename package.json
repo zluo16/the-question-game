@@ -2,11 +2,13 @@
   "name": "multiple-choice-jeopardy",
   "private": true,
   "dependencies": {
+    "@plated/plated_kit": "^0.0.3",
     "@rails/webpacker": "3.5",
     "babel-preset-react": "^6.24.1",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
-    "react-dom": "^16.4.0"
+    "react-dom": "^16.4.0",
+    "uikit": "^3.0.0-rc.5"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"
