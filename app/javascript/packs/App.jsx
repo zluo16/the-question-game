@@ -5,9 +5,11 @@ import AnswerList from './components/answersList';
 
 export default class App extends Component {
 
-    state = {
-        clue: '',
-        answers: []
+    constructor() {
+        super();
+        this.state = { clue: '', answers: [] };
+        this.timer = 30;
+        this.countDown = this.countDown.bind(this);
     };
 
     componentDidMount() {
@@ -16,7 +18,10 @@ export default class App extends Component {
                 const answers = res.data.answers.map(a => a.answer);
                 answers.push(res.data.clue.answer);
                 const shuffledAnswers = this.shuffleAnswers(answers);
-                this.setState({ clue: res.data.clue, answers: shuffledAnswers });
+                this.setState({ 
+                    clue: res.data.clue, 
+                    answers: shuffledAnswers 
+                });
              });
     };
 
