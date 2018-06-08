@@ -5,6 +5,7 @@
     "@material-ui/core": "^1.2.0",
     "@plated/plated_kit": "^0.0.3",
     "@rails/webpacker": "3.5",
+    "axios": "^0.18.0",
     "babel-preset-react": "^6.24.1",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
