@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Timer from './components/timer';
 import Question from './components/question';
 import AnswerList from './components/answersList';
 
@@ -7,8 +8,9 @@ export default class App extends Component {
 
     constructor() {
         super();
-        this.state = { clue: '', answers: [] };
-        this.timer = 30;
+        this.state = { clue: '', answers: [], seconds: 30 };
+        this.timer = 0;
+        this.startTimer = this.startTimer.bind(this);
         this.countDown = this.countDown.bind(this);
     };
 
@@ -23,6 +25,25 @@ export default class App extends Component {
                     answers: shuffledAnswers 
                 });
              });
+        this.startTimer();
+    };
+
+    startTimer() {
+        if (this.timer == 0) {
+            this.timer = setInterval(this.countDown, 1000);
+        };
+    };
+
+    countDown() {
+        let secs = this.state.seconds - 1;
+        if (secs == 0) {
+            clearInterval(this.timer);
+        } else {
+            this.setState({
+                ...this.state,
+                seconds: secs
+            });
+        };
     };
 
     shuffleAnswers(answers) {
@@ -37,6 +58,7 @@ export default class App extends Component {
         return (
             <div className='uk-container'>
                 <h2 className='font-face'>Hello World</h2>
+                <Timer time={this.state.seconds} />
                 <Question question={this.state.clue.phrase} />
                 <AnswerList answers={this.state.answers} />
             </div>
