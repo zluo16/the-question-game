@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Timer from './components/timer';
 import Question from './components/question';
-import AnswerList from './components/answersList';
+import AnswerList from './components/answers/answersList';
 
 export default class App extends Component {
 
@@ -56,8 +56,7 @@ export default class App extends Component {
 
     render() {
         return (
-            <div className='uk-container'>
-                <h2 className='font-face'>Hello World</h2>
+            <div>
                 <Timer time={this.state.seconds} />
                 <Question question={this.state.clue.phrase} />
                 <AnswerList answers={this.state.answers} />

@@ -5,7 +5,7 @@ const Question = ({ question }) => {
     return (
         <Grid container spacing={24}>
             <Grid item xs={12}>
-                {question}
+                <h3>{question}</h3>
             </Grid>
         </Grid>
     );
