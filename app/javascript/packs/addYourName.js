@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
+import createHashHistory from 'history/createHashHistory';
+
+const history = createHashHistory({
+    hashType: 'slash'
+});
 
 const styles = theme => ({
     container: {
@@ -32,12 +37,18 @@ class AddYourName extends Component {
         axios.post('/api/add-player', {
             player: this.state.player,
             score: parseInt(score)
-        });
+        }).then(res => {
+            if (res.data.status == 200) {
+                history.push('/leaderboard');
+            };
+        }).catch(error => console.log(error));
     };
 
     render() {
         return (
-            <form className={this.props.container}>
+            <form 
+                className={this.props.container} 
+                onSubmit={this.handleSubmit}>
                 <Input
                     placeholder="Add your name"
                     className={this.props.input}
