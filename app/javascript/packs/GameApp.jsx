@@ -5,7 +5,7 @@ import Timer from './components/timer';
 import Question from './components/question';
 import AnswerList from './components/answers/answersList';
 
-export default class App extends Component {
+export default class GameApp extends Component {
 
     constructor() {
         super();
