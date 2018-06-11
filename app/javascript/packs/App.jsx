@@ -21,25 +21,30 @@ export default class App extends Component {
     };
 
     componentDidMount() {
+        this.getNewQuestion();
+        this.startTimer();
+    };
+
+    getNewQuestion() {
         axios.get('/api/clue')
-             .then(res => {
+            .then(res => {
                 const answers = res.data.answers.map(a => {
                     return {
                         text: a.answer,
                         id: a.id
                     };
                 });
-                answers.push({ 
+                answers.push({
                     text: res.data.clue.answer,
                     id: res.data.clue.id
                 });
                 const shuffledAnswers = this.shuffleAnswers(answers);
-                this.setState({ 
-                    clue: res.data.clue, 
-                    answers: shuffledAnswers 
+                this.setState({
+                    ...this.state,
+                    clue: res.data.clue,
+                    answers: shuffledAnswers
                 });
-             });
-        this.startTimer();
+            });
     };
 
     startTimer() {
@@ -50,7 +55,7 @@ export default class App extends Component {
 
     countDown() {
         let secs = this.state.seconds - 1;
-        if (secs == 0) {
+        if (secs < 0) {
             clearInterval(this.timer);
         } else {
             this.setState({
@@ -75,6 +80,7 @@ export default class App extends Component {
                 points: this.state.points + 15
             });
         };
+        this.getNewQuestion();
     };
 
     render() {
