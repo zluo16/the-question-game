@@ -9,6 +9,7 @@
 require 'net/http'
 
 action_controller_helpers = ActionController::Base.helpers
+faker = Faker::Name
 
 url = URI.parse('http://jservice.io/api/random?count=100')
 req = Net::HTTP::Get.new(url.to_s)
@@ -35,4 +36,11 @@ end
 
 res_stripped.each do | question |
     Clue.create(phrase: question.clue, answer: question.answer, value: question.value)
+end
+
+score = 250
+
+10.times do |i|
+    Game.create(player: faker.first_name, score: score)
+    score -= 15
 end
