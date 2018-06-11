@@ -70,7 +70,7 @@ export default class App extends Component {
 
     checkCorrect = (event) => {
         debugger
-        if (event.target.value == this.state.clue.answer) {
+        if (event.target.textContent == this.state.clue.answer) {
             this.setState({
                 ...this.state,
                 points: this.state.points + 15
