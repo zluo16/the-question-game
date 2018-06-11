@@ -38,12 +38,15 @@ export default class App extends Component {
                     text: res.data.clue.answer,
                     id: res.data.clue.id
                 });
+                console.log(answers)
                 const shuffledAnswers = this.shuffleAnswers(answers);
+                console.log(this.shuffleAnswers(answers))
                 this.setState({
                     ...this.state,
                     clue: res.data.clue,
                     answers: shuffledAnswers
                 });
+                console.log(shuffledAnswers)
             });
     };
 
@@ -66,7 +69,7 @@ export default class App extends Component {
     };
 
     shuffleAnswers(answers) {
-        for (let i = 0; i < answers.length; i++) {
+        for (let i = answers.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [answers[i], answers[j] = answers[j], answers[i]];
         };
