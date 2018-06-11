@@ -4,11 +4,16 @@ import Points from './components/points';
 import Timer from './components/timer';
 import Question from './components/question';
 import AnswerList from './components/answers/answersList';
+import createHashHistory from 'history/createHashHistory';
+
+const history = createHashHistory({
+    hashType: 'slash'
+})
 
 export default class GameApp extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = { 
             clue: '', 
             answers: [], 
@@ -47,8 +52,8 @@ export default class GameApp extends Component {
 
     countDown() {
         let secs = this.state.seconds - 1;
-        if (secs < 0) {
-            clearInterval(this.timer);
+        if (secs < 1) {
+            history.push('/leaderboard');
         } else {
             this.setState({
                 ...this.state,

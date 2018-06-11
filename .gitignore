@@ -16,6 +16,9 @@
 # Ignore uploaded files in development
 /storage/*
 
+# Ignore VS settings
+.vscode
+
 /node_modules
 /yarn-error.log
 
