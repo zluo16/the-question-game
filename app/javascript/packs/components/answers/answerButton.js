@@ -10,10 +10,9 @@ export default class AnswerButton extends Component {
     render() {
         return (
             <Button 
-                id={this.props.answer.id} 
                 variant='contained'
                 onClick={this.props.checkCorrect}>
-                {this.props.answer.text}
+                {this.props.answer}
             </Button>
         );
     };

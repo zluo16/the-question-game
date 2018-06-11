@@ -28,25 +28,14 @@ export default class App extends Component {
     getNewQuestion() {
         axios.get('/api/clue')
             .then(res => {
-                const answers = res.data.answers.map(a => {
-                    return {
-                        text: a.answer,
-                        id: a.id
-                    };
-                });
-                answers.push({
-                    text: res.data.clue.answer,
-                    id: res.data.clue.id
-                });
-                console.log(answers)
-                const shuffledAnswers = this.shuffleAnswers(answers);
-                console.log(this.shuffleAnswers(answers))
+                const answers = res.data.answers.map(a => a.answer);
+                answers.push(res.data.clue.answer);
+                const shuffledAnswers = this.shuffleAnswers(answers)
                 this.setState({
                     ...this.state,
                     clue: res.data.clue,
                     answers: shuffledAnswers
                 });
-                console.log(shuffledAnswers)
             });
     };
 
@@ -69,15 +58,19 @@ export default class App extends Component {
     };
 
     shuffleAnswers(answers) {
-        for (let i = answers.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [answers[i], answers[j] = answers[j], answers[i]];
+        for (let i = answers.length - 1; i > -1; i--) {
+            let j = Math.floor(Math.random() * i);
+            let temp = answers[i];
+            let rand = answers[j];
+            answers[i] = rand;
+            answers[j] = temp;
         };
         return answers;
     };
 
     checkCorrect = (event) => {
-        if (event.target.id == this.state.clue.id) {
+        debugger
+        if (event.target.value == this.state.clue.answer) {
             this.setState({
                 ...this.state,
                 points: this.state.points + 15
