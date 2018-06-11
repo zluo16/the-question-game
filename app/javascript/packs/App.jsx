@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Points from './components/points';
 import Timer from './components/timer';
 import Question from './components/question';
 import AnswerList from './components/answers/answersList';
@@ -8,7 +9,12 @@ export default class App extends Component {
 
     constructor() {
         super();
-        this.state = { clue: '', answers: [], seconds: 30 };
+        this.state = { 
+            clue: '', 
+            answers: [], 
+            seconds: 30 ,
+            points: 0
+        };
         this.timer = 0;
         this.startTimer = this.startTimer.bind(this);
         this.countDown = this.countDown.bind(this);
@@ -17,8 +23,16 @@ export default class App extends Component {
     componentDidMount() {
         axios.get('/api/clue')
              .then(res => {
-                const answers = res.data.answers.map(a => a.answer);
-                answers.push(res.data.clue.answer);
+                const answers = res.data.answers.map(a => {
+                    return {
+                        text: a.answer,
+                        id: a.id
+                    };
+                });
+                answers.push({ 
+                    text: res.data.clue.answer,
+                    id: res.data.clue.id
+                });
                 const shuffledAnswers = this.shuffleAnswers(answers);
                 this.setState({ 
                     clue: res.data.clue, 
@@ -54,12 +68,25 @@ export default class App extends Component {
         return answers;
     };
 
+    checkCorrect = (event) => {
+        if (event.target.id == this.state.clue.id) {
+            this.setState({
+                ...this.state,
+                points: this.state.points + 15
+            });
+        };
+    };
+
     render() {
         return (
             <div>
                 <Timer time={this.state.seconds} />
+                <Points points={this.state.points} />
                 <Question question={this.state.clue.phrase} />
-                <AnswerList answers={this.state.answers} />
+                <AnswerList 
+                    answers={this.state.answers}
+                    checkCorrect={this.checkCorrect}
+                />
             </div>
         );
     };

@@ -9,7 +9,12 @@ export default class AnswerButton extends Component {
 
     render() {
         return (
-            <Button variant='contained' >{this.props.answer}</Button>
+            <Button 
+                id={this.props.answer.id} 
+                variant='contained'
+                onClick={this.props.checkCorrect}>
+                {this.props.answer.text}
+            </Button>
         );
     };
 };

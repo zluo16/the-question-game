@@ -1,10 +1,17 @@
 import React from 'react';
 import AnswerButton from './answerButton';
 
-const AnswerList = ({ answers }) => {
+const AnswerList = ({ answers, checkCorrect }) => {
     return (
         <div>
-            {answers.map(answer => <AnswerButton answer={answer} />)}
+            {answers.map(answer => {
+                return (
+                    <AnswerButton 
+                        answer={answer} 
+                        checkCorrect={checkCorrect}
+                    />
+                );
+            })};
         </div>
     );
 };
