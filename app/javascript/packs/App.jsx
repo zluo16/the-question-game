@@ -60,16 +60,14 @@ export default class App extends Component {
     shuffleAnswers(answers) {
         for (let i = answers.length - 1; i > -1; i--) {
             let j = Math.floor(Math.random() * i);
-            let temp = answers[i];
-            let rand = answers[j];
-            answers[i] = rand;
+            let temp = answers[i]
+            answers[i] = answer[j;
             answers[j] = temp;
         };
         return answers;
     };
 
     checkCorrect = (event) => {
-        debugger
         if (event.target.textContent == this.state.clue.answer) {
             this.setState({
                 ...this.state,
