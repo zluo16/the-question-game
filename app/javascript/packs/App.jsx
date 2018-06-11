@@ -61,7 +61,7 @@ export default class App extends Component {
         for (let i = answers.length - 1; i > -1; i--) {
             let j = Math.floor(Math.random() * i);
             let temp = answers[i]
-            answers[i] = answer[j;
+            answers[i] = answers[j];
             answers[j] = temp;
         };
         return answers;

@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { HashRouter } from 'react-router-dom';
+import Router from './router'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <App name="React" />,
+    <HashRouter name="React" basename="/">
+      <Router />
+    </HashRouter>,
     document.body.appendChild(document.createElement('div')),
   );
 });
