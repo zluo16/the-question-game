@@ -1,5 +1,4 @@
 class Api::GamesController < ApplicationController
-  before_action :set_game, only: [:show, :edit, :update, :destroy]
 
   def index
     @leaderboard = Game.leaderboard
@@ -11,7 +10,7 @@ class Api::GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
-        redirect_to index
+        render json: { status: 200, message: "Success" }
       end
     end
   end
