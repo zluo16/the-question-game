@@ -62,8 +62,8 @@ class GameApp extends Component {
         let secs = this.state.seconds - 1;
         if (secs < 1) {
             clearInterval(this.timer);
-            // sessionStorage.setItem('score', JSON.stringify(this.state.points));
-            // history.push('/name-prompt');
+            sessionStorage.setItem('score', JSON.stringify(this.state.points));
+            history.push('/name-prompt');
         } else {
             this.setState({
                 ...this.state,

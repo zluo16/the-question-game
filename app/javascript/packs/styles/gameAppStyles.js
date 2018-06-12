@@ -1,5 +1,6 @@
 const gameAppStyles = (theme) => ({
     card: {
+        marginTop: '18%',
         textAlign: 'center',
         flexWrap: 'wrap'
     },
