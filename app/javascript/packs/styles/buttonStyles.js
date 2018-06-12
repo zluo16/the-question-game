@@ -1,6 +1,7 @@
 const buttonStyles = (theme) => ({
     button: {
-        // borderRadius: '20%',
+        width: '100%',
+        marginBottom: '2% !important'
     }
 });
 

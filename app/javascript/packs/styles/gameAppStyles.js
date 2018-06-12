@@ -1,8 +1,11 @@
 const gameAppStyles = (theme) => ({
     card: {
-        display: 'flex',
-        justifyContent: 'center',
+        textAlign: 'center',
         flexWrap: 'wrap'
+    },
+    actions: {
+        display: 'flex',
+        justifyContent: 'center'
     }
 });
 

@@ -25,7 +25,7 @@ class GameApp extends Component {
         this.state = { 
             clue: '', 
             answers: [], 
-            seconds: 30 ,
+            seconds: 100 ,
             points: 0
         };
         this.timer = 0;
@@ -62,7 +62,7 @@ class GameApp extends Component {
         let secs = this.state.seconds - 1;
         if (secs < 1) {
             clearInterval(this.timer);
-            sessionStorage.setItem('score', JSON.stringify(this.state.points));
+            // sessionStorage.setItem('score', JSON.stringify(this.state.points));
             // history.push('/name-prompt');
         } else {
             this.setState({
@@ -101,12 +101,14 @@ class GameApp extends Component {
                         <Card className={this.props.classes.card}>
                             <CardContent>
                                 <Timer time={this.state.seconds} />
+                            </CardContent>
+                            <CardContent>
                                 <Points points={this.state.points} />
                             </CardContent>
                             <CardContent>
                                 <Question question={this.state.clue.phrase} />
                             </CardContent>
-                            <CardActions>
+                            <CardActions className={this.props.classes.actions}>
                                 <AnswerList 
                                     answers={this.state.answers}
                                     checkCorrect={this.checkCorrect}
