@@ -12,7 +12,7 @@ const AnswerList = ({ answers, checkCorrect, index }) => {
                         checkCorrect={checkCorrect}
                     />
                 );
-            })};
+            })}
         </div>
     );
 };

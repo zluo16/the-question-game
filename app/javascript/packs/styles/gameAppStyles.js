@@ -4,4 +4,6 @@ const gameAppStyles = (theme) => ({
         justifyContent: 'center',
         flexWrap: 'wrap'
     }
-})
+});
+
+export default gameAppStyles;
