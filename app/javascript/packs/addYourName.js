@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import addYourNameStyles from './styles/addYourNameStyles';
 import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
@@ -8,16 +9,6 @@ import createHashHistory from 'history/createHashHistory';
 
 const history = createHashHistory({
     hashType: 'slash'
-});
-
-const styles = theme => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap'
-    },
-    input: {
-        margin: theme.spacing.unit
-    }
 });
 
 class AddYourName extends Component {
@@ -72,4 +63,4 @@ AddYourName.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(AddYourName);
+export default withStyles(addYourNameStyles)(AddYourName);

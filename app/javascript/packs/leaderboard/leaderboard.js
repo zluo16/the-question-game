@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import leaderbaordStyles from '../styles/leaderboardStyles';
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -8,17 +9,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import PlayerScore from './playerScore';
-
-const styles = (theme) => ({
-    root: {
-        width: '100%',
-        marginTop: theme.spacing.unit * 3,
-        overflowX: 'auto',
-    },
-    table: {
-        minWidth: 500
-    }
-});
 
 class Leaderboard extends Component {
     constructor(props) {
@@ -63,4 +53,4 @@ Leaderboard.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Leaderboard);
+export default withStyles(leaderbaordStyles)(Leaderboard);

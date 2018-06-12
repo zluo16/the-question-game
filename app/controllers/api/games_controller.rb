@@ -14,7 +14,6 @@ class Api::GamesController < ApplicationController
 
   private
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
       params.permit(:player, :score)
     end
