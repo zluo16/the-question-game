@@ -53,7 +53,8 @@ export default class GameApp extends Component {
     countDown() {
         let secs = this.state.seconds - 1;
         if (secs < 1) {
-            localStorage.setItem('score', JSON.stringify(this.state.score))
+            clearInterval(this.timer);
+            sessionStorage.setItem('score', JSON.stringify(this.state.points));
             history.push('/name-prompt');
         } else {
             this.setState({

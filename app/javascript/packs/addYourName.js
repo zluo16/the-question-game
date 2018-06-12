@@ -32,13 +32,15 @@ class AddYourName extends Component {
         this.setState({ player: event.target.value });
     }
 
-    handleSubmit = () => {
-        let score = localStorage.getItem('score');
+    handleSubmit = (event) => {
+        event.preventDefault();
+        let score = sessionStorage.getItem('score');
         axios.post('/api/add-player', {
             player: this.state.player,
             score: parseInt(score)
         }).then(res => {
-            if (res.data.status == 200) {
+            if (res.data.message == 'Success') {
+                sessionStorage.clear();
                 history.push('/leaderboard');
             };
         }).catch(error => console.log(error));
@@ -53,6 +55,7 @@ class AddYourName extends Component {
                     placeholder="Add your name"
                     className={this.props.input}
                     inputProps={{'aria-label': 'Description'}}
+                    onChange={this.handleInputChange}
                 />
                 <Button type='submit' variant='contained'>
                     Add
