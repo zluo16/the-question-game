@@ -48,19 +48,22 @@ class AddYourName extends Component {
 
     render() {
         return (
-            <form 
-                className={this.props.container} 
-                onSubmit={this.handleSubmit}>
-                <Input
-                    placeholder="Add your name"
-                    className={this.props.input}
-                    inputProps={{'aria-label': 'Description'}}
-                    onChange={this.handleInputChange}
-                />
-                <Button type='submit' variant='contained'>
-                    Add
-                </Button>
-            </form>
+            <div>
+                <h3>Your score: {sessionStorage.getItem('score')}</h3>
+                <form 
+                    className={this.props.container} 
+                    onSubmit={this.handleSubmit}>
+                    <Input
+                        placeholder="Add your name"
+                        className={this.props.input}
+                        inputProps={{'aria-label': 'Description'}}
+                        onChange={this.handleInputChange}
+                    />
+                    <Button type='submit' variant='contained'>
+                        Add
+                    </Button>
+                </form>
+            </div>
         );
     };
 };
