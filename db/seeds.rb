@@ -18,16 +18,17 @@ res = Net::HTTP.start(url.host, url.port) { | http |
 }
 
 class Question
-    attr_accessor :answer, :clue, :value
-    def initialize(answer, clue, value)
+    attr_accessor :answer, :clue, :value, :category_id
+    def initialize(answer, clue, value, category_id)
         @answer = answer
         @clue = clue
         @value = value
+        @category_id = category_id
     end
 end
 
 res_array = JSON.parse(res.body)
-res_unfiltered = res_array.map{ | clue | Question.new(clue['answer'], clue['question'], clue['value']) }
+res_unfiltered = res_array.map{ | clue | Question.new(clue['answer'], clue['question'], clue['value'], clue['category_id']) }
 res_stripped = res_unfiltered.map do | question |
     question.answer = action_controller_helpers.strip_tags(question.answer).gsub('\\', '').gsub('&amp;', '&')
     question.clue = action_controller_helpers.strip_tags(question.clue).gsub('\\', '').gsub('&amp;', '&')
