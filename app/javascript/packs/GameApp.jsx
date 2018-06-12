@@ -5,12 +5,20 @@ import Timer from './components/timer';
 import Question from './components/question';
 import AnswerList from './components/answers/answersList';
 import createHashHistory from 'history/createHashHistory';
+import { PropTypes } from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import gameAppStyles from './styles/gameAppStyles';
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
 
 const history = createHashHistory({
     hashType: 'slash'
 })
 
-export default class GameApp extends Component {
+class GameApp extends Component {
 
     constructor(props) {
         super(props);
@@ -55,7 +63,7 @@ export default class GameApp extends Component {
         if (secs < 1) {
             clearInterval(this.timer);
             sessionStorage.setItem('score', JSON.stringify(this.state.points));
-            history.push('/name-prompt');
+            // history.push('/name-prompt');
         } else {
             this.setState({
                 ...this.state,
@@ -87,14 +95,34 @@ export default class GameApp extends Component {
     render() {
         return (
             <div>
-                <Timer time={this.state.seconds} />
-                <Points points={this.state.points} />
-                <Question question={this.state.clue.phrase} />
-                <AnswerList 
-                    answers={this.state.answers}
-                    checkCorrect={this.checkCorrect}
-                />
+                <Grid container spacing={24}>
+                    <Grid item xs></Grid>
+                    <Grid item xs={6}>
+                        <Card className={this.props.classes.card}>
+                            <CardContent>
+                                <Timer time={this.state.seconds} />
+                                <Points points={this.state.points} />
+                            </CardContent>
+                            <CardContent>
+                                <Question question={this.state.clue.phrase} />
+                            </CardContent>
+                            <CardActions>
+                                <AnswerList 
+                                    answers={this.state.answers}
+                                    checkCorrect={this.checkCorrect}
+                                />
+                            </CardActions>
+                        </Card>
+                    </Grid>
+                    <Grid item xs></Grid>
+                </Grid>
             </div>
         );
     };
 };
+
+GameApp.propTypes = {
+    classes: PropTypes.object.isRequired
+};
+
+export default withStyles(gameAppStyles)(GameApp);

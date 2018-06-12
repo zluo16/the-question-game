@@ -1,10 +1,12 @@
 const startPageStyles = (theme) => ({
     card: {
-        textAlign: 'center'
+        marginTop: '40%',
+        textAlign: 'center',
     },
     button: {
         margin: 'auto',
-        width: '50%'
+        width: '50%',
+        marginBottom: '15px'
     }
 });
 
