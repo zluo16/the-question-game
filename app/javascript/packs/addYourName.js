@@ -50,7 +50,9 @@ class AddYourName extends Component {
                 <Grid item xs={4}>
                     <Card className={container}>
                         <CardContent>
-                            <Typography variant='display2'>Your score: {sessionStorage.getItem('score')}</Typography>
+                            <Typography variant='display2'>
+                                Your score: {sessionStorage.getItem('score')}
+                            </Typography>
                         </CardContent>
                         <CardActions>
                             <form 

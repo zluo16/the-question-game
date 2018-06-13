@@ -1,17 +1,29 @@
 import React from 'react';
-import { TableRow, TableCell } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import { TableRow, TableCell, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+import leaderboardStyles from '../styles/leaderboardStyles';
 
-const PlayerScore = ({ player, score }) => {
+const PlayerScore = (props) => {
+    const { player, score, classes } = props
     return (
         <TableRow>
             <TableCell component='th' scope='row'>
-                {player}
+                <Typography variant='body2'>
+                    {player}
+                </Typography>
             </TableCell>
-            <TableCell>
-                {score}
+            <TableCell className={classes.cell}>
+                <Typography variant='body2'>
+                    {score}
+                </Typography>
             </TableCell>
         </TableRow>
     );
 };
 
-export default PlayerScore;
+PlayerScore.propTypes = {
+    classes: PropTypes.object.isRequired
+};
+
+export default withStyles(leaderboardStyles)(PlayerScore);
