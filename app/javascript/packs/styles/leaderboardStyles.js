@@ -10,8 +10,7 @@ const leaderboardStyles = (theme) => ({
         minWidth: 500
     },
     cell: {
-        textAlign: 'left',
-        paddingRight: '2px !important'
+        textAlign: 'center'
     }
 });
 

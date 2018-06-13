@@ -33,7 +33,7 @@ class Leaderboard extends Component {
         return (
             <Grid container size={24}>
                 <Grid item xs></Grid>
-                <Grid item xs={5}>
+                <Grid item xs={3}>
                     <Typography align='center' variant='display3' className={classes.heading}>
                         Leaderboard
                     </Typography>
