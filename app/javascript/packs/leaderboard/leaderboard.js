@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import createHashHistory from 'history/createHashHistory';
 import leaderbaordStyles from '../styles/leaderboardStyles';
 import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid'
+import CodeIcon from '@material-ui/icons/Code';
+import Avatar from '@material-ui/core/Avatar';
+import Grid from '@material-ui/core/Grid';
+import Chip from '@material-ui/core/Chip';
 import Card from '@material-ui/core/Card';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -12,6 +16,10 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import PlayerScore from './playerScore';
+
+const history = createHashHistory({
+    hashType: 'slash'
+});
 
 class Leaderboard extends Component {
     constructor(props) {
@@ -27,6 +35,10 @@ class Leaderboard extends Component {
                 this.setState({ leaderboard: res.data });
             });
     };
+
+    sendHome = () => {
+        history.push('/');
+    }
 
     render() {
         const { classes } = this.props;
@@ -65,6 +77,26 @@ class Leaderboard extends Component {
                             </TableBody>
                         </Table>
                     </Card>
+                    <div className={classes.chipContainer}>
+                        <Chip
+                            className={classes.chip}
+                            label='Play Again'
+                            onClick={this.sendHome}
+                            clickable
+                        />
+                        <Chip
+                            className={classes.chip}
+                            label='Github'
+                            clickable
+                            component='a'
+                            href='https://github.com/zluo16/the-question-game'
+                            avatar={
+                                <Avatar>
+                                    <CodeIcon />
+                                </Avatar>
+                            }
+                        />
+                    </div>
                 </Grid>
                 <Grid item xs></Grid>
             </Grid>

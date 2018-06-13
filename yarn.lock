@@ -41,6 +41,12 @@
     scroll "^2.0.3"
     warning "^4.0.1"
 
+"@material-ui/icons@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@material-ui/icons/-/icons-1.1.0.tgz#4d025df7b0ba6ace8d6710079ed76013a4d26595"
+  dependencies:
+    recompose "^0.26.0 || ^0.27.0"
+
 "@plated/plated_kit@^0.0.3":
   version "0.0.3"
   resolved "https://npm-proxy.fury.io/1fUiJU-YZ9thNhzmLrFbjEPf80qQOcYu8/plateddev1/~/d/%40plated%2Fplated_kit/%40plated%2Fplated_kit-0.0.3#06545caa22b950e29c799697122be3cfe0e9ef9c"

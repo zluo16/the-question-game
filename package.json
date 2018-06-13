@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^1.2.0",
+    "@material-ui/icons": "^1.1.0",
     "@plated/plated_kit": "^0.0.3",
     "@rails/webpacker": "3.5",
     "axios": "^0.18.0",

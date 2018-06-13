@@ -11,6 +11,14 @@ const leaderboardStyles = (theme) => ({
     },
     cell: {
         textAlign: 'center'
+    },
+    chipContainer: {
+        display: 'flex',
+        justifyContent: 'left',
+        marginTop: '10px'
+    },
+    chip: {
+        marginRight: '10px'
     }
 });
 

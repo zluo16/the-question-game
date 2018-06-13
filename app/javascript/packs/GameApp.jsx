@@ -89,6 +89,11 @@ class GameApp extends Component {
                 seconds: this.state.seconds + 2,
                 points: this.state.points + 15
             });
+        } else {
+            this.setState({
+                ...this.state,
+                points: this.state.points - 10
+            });
         };
         this.getNewQuestion();
     };
