@@ -4,9 +4,9 @@ import { withStyles } from '@material-ui/core/styles';
 import timerStyles from '../styles/timerStyles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
-const Timer = ({ time }) => {
+const Timer = ({ time, classes }) => {
     return (
-        <LinearProgress variant='determinate' value={time} />
+        <LinearProgress variant='determinate' value={time} className={classes.progress} />
     );
 };
 

@@ -54,7 +54,7 @@ class GameApp extends Component {
 
     startTimer() {
         if (this.timer == 0) {
-            this.timer = setInterval(this.countDown, 1000);
+            this.timer = setInterval(this.countDown, 700);
         };
     };
 
@@ -86,6 +86,7 @@ class GameApp extends Component {
         if (event.target.textContent == this.state.clue.answer) {
             this.setState({
                 ...this.state,
+                seconds: this.state.seconds + 2,
                 points: this.state.points + 15
             });
         };
