@@ -3,6 +3,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import leaderbaordStyles from '../styles/leaderboardStyles';
 import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -26,29 +27,32 @@ class Leaderboard extends Component {
     };
 
     render() {
+        const { classes } = this.props;
         return (
-            <Table className={this.props.table}>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Player</TableCell>
-                        <TableCell>Score</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {this.state.leaderboard.map(game => {
-                        return (
-                            <PlayerScore 
-                                player={game.player} 
-                                score={game.score}
-                            />
-                        )
-                    })}
-                </TableBody>
-            </Table>
-        );
+            <Card className={classes.root}>
+                <Table className={classes.table}>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Player</TableCell>
+                            <TableCell>Score</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {this.state.leaderboard.map(game => {
+                            return (
+                                <PlayerScore 
+                                    player={game.player} 
+                                    score={game.score}
+                                />
+                            )
+                        })}
+                    </TableBody>
+                </Table>
+            </Card>
+            );
+        };
     };
-};
-
+    
 Leaderboard.propTypes = {
     classes: PropTypes.object.isRequired
 };

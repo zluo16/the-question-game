@@ -7,7 +7,7 @@ const PlayerScore = ({ player, score }) => {
             <TableCell component='th' scope='row'>
                 {player}
             </TableCell>
-            <TableCell numeric>
+            <TableCell>
                 {score}
             </TableCell>
         </TableRow>
