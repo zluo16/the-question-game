@@ -3,6 +3,11 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import addYourNameStyles from './styles/addYourNameStyles';
 import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Typography from '@material-ui/core/Typography';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import createHashHistory from 'history/createHashHistory';
@@ -38,23 +43,33 @@ class AddYourName extends Component {
     };
 
     render() {
+        const { container, input, button } = this.props.classes
         return (
-            <div>
-                <h3>Your score: {sessionStorage.getItem('score')}</h3>
-                <form 
-                    className={this.props.container} 
-                    onSubmit={this.handleSubmit}>
-                    <Input
-                        placeholder="Add your name"
-                        className={this.props.input}
-                        inputProps={{'aria-label': 'Description'}}
-                        onChange={this.handleInputChange}
-                    />
-                    <Button type='submit' variant='contained'>
-                        Add
-                    </Button>
-                </form>
-            </div>
+            <Grid container spacing={24}>
+                <Grid item xs></Grid>
+                <Grid item xs={4}>
+                    <Card className={container}>
+                        <CardContent>
+                            <Typography variant='display2'>Your score: {sessionStorage.getItem('score')}</Typography>
+                        </CardContent>
+                        <CardActions>
+                            <form 
+                                onSubmit={this.handleSubmit}>
+                                <Input
+                                    placeholder="Add your name"
+                                    className={input}
+                                    inputProps={{'aria-label': 'Description'}}
+                                    onChange={this.handleInputChange}
+                                />
+                                <Button className={button} type='submit' variant='outlined'>
+                                    Add
+                                </Button>
+                            </form>
+                        </CardActions>
+                    </Card>
+                </Grid>
+                <Grid item xs></Grid>
+            </Grid>
         );
     };
 };

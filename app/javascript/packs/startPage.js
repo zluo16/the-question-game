@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
@@ -29,7 +30,7 @@ class StartPage extends Component {
                 <Grid item xs={4}>
                     <Card className={this.props.classes.card}>
                         <CardContent className={this.props.classes.content}>
-                            <h3>Welcome to the Question Game!</h3>
+                            <Typography variant='display1'>Welcome to the Question Game!</Typography>
                         </CardContent>
                         <CardActions>
                             <Button 
