@@ -36,7 +36,7 @@ res_stripped = res_unfiltered.map do | question |
 end
 
 res_stripped.each do | question |
-    if Clue.where(answer: question.answer) < 1
+    if Clue.where(answer: question.answer).length < 1
         Clue.create(phrase: question.clue, answer: question.answer, value: question.value)
     end
 end
