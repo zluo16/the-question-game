@@ -36,12 +36,21 @@ res_stripped = res_unfiltered.map do | question |
 end
 
 res_stripped.each do | question |
-    Clue.create(phrase: question.clue, answer: question.answer, value: question.value)
+    if Clue.where(answer: question.answer) < 1
+        Clue.create(phrase: question.clue, answer: question.answer, value: question.value)
+    end
 end
 
-score = 250
+# score = 250
 
-10.times do |i|
-    Game.create(player: faker.first_name, score: score)
-    score -= 15
+# 10.times do |i|
+#     Game.create(player: faker.first_name, score: score)
+#     score -= 15
+# end
+
+# Remove duplicates from database
+Clue.all.each do |clue|
+    if Clue.where(answer: clue.answer).length > 1
+        clue.destroy
+    end
 end
