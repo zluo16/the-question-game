@@ -30,7 +30,7 @@ class StartPage extends Component {
                 <Grid item xs={4}>
                     <Card className={this.props.classes.card}>
                         <CardContent className={this.props.classes.content}>
-                            <Typography variant='display1'>Welcome to the Question Game!</Typography>
+                            <Typography variant='display1'>Welcome to Multiple Choice Jeopardy!</Typography>
                         </CardContent>
                         <CardActions>
                             <Button 

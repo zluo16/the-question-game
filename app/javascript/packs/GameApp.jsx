@@ -90,10 +90,12 @@ class GameApp extends Component {
                 points: this.state.points + 15
             });
         } else {
-            this.setState({
-                ...this.state,
-                points: this.state.points - 10
-            });
+            if (this.state.points - 10 > -1) {
+                this.setState({
+                    ...this.state,
+                    points: this.state.points - 10
+                });
+            };
         };
         this.getNewQuestion();
     };
