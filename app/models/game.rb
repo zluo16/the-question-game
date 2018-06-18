@@ -7,6 +7,6 @@ class Game < ApplicationRecord
 
     def set_defaults
         self.score ||= 0
-        self.player ||= "Player #{Game.count}"
+        self.player ||= "Player #{Game.count + 1}"
     end
 end
