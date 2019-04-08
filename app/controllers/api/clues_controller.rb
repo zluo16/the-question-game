@@ -7,8 +7,8 @@ class Api::CluesController < ApplicationController
 
   private
 
-    def set_clue
-      @clue = Clue.question
-    end
+  def set_clue
+    @clue = Clue.question
+  end
 
 end

@@ -18,94 +18,95 @@ import Typography from '@material-ui/core/Typography';
 import PlayerScore from './playerScore';
 
 const history = createHashHistory({
-    hashType: 'slash'
+  hashType: 'slash'
 });
 
 class Leaderboard extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            leaderboard: []
-        };
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      leaderboard: []
     };
+  };
 
-    componentDidMount() {
-        axios.get('/api/leaderboard')
-            .then(res => {
-                this.setState({ leaderboard: res.data });
-            });
-    };
+  componentDidMount() {
+    axios.get('/api/leaderboard')
+    .then(res => {
+      this.setState({ leaderboard: res.data });
+    });
+  };
 
-    sendHome = () => {
-        history.push('/');
-    }
+  sendHome = () => {
+    history.push('/');
+  };
 
-    render() {
-        const { classes } = this.props;
-        return (
-            <Grid container size={24}>
-                <Grid item xs></Grid>
-                <Grid item xs={3}>
-                    <Typography align='center' variant='display3' className={classes.heading}>
-                        Leaderboard
+  render() {
+    const { classes } = this.props;
+    return (
+      <Grid container size={24}>
+        <Grid item xs></Grid>
+        <Grid item xs={3}>
+          <Typography align='center' variant='display3' className={classes.heading}>
+            Leaderboard
+          </Typography>
+          <Card className={classes.root}>
+            <Table className={classes.table}>
+              <TableHead>
+                <TableRow>
+                  <TableCell>
+                    <Typography variant='headline'>
+                      Player
                     </Typography>
-                    <Card className={classes.root}>
-                        <Table className={classes.table}>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>
-                                        <Typography variant='headline'>
-                                            Player
-                                        </Typography>
-                                    </TableCell>
-                                    <TableCell className={classes.cell}>
-                                        <Typography variant='headline'>
-                                            Score
-                                        </Typography>
-                                    </TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {this.state.leaderboard.map(game => {
-                                    return (
-                                        <PlayerScore 
-                                            player={game.player} 
-                                            score={game.score}
-                                        />
-                                    )
-                                })}
-                            </TableBody>
-                        </Table>
-                    </Card>
-                    <div className={classes.chipContainer}>
-                        <Chip
-                            className={classes.chip}
-                            label='Play Again'
-                            onClick={this.sendHome}
-                            clickable
-                        />
-                        <Chip
-                            className={classes.chip}
-                            label='Github'
-                            clickable
-                            component='a'
-                            href='https://github.com/zluo16/the-question-game'
-                            avatar={
-                                <Avatar>
-                                    <CodeIcon />
-                                </Avatar>
-                            }
-                        />
-                    </div>
-                </Grid>
-                <Grid item xs></Grid>
-            </Grid>
-            );
-        };
-    };
-    
+                  </TableCell>
+                  <TableCell className={classes.cell}>
+                    <Typography variant='headline'>
+                      Score
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {this.state.leaderboard.map(game => {
+                  return (
+                    <PlayerScore
+                      player={game.player}
+                      score={game.score}
+                    />
+                  );
+                })}
+              </TableBody>
+            </Table>
+          </Card>
+          <div className={classes.chipContainer}>
+            <Chip
+              className={classes.chip}
+              label='Play Again'
+              onClick={this.sendHome}
+              clickable
+            />
+            <Chip
+              className={classes.chip}
+              label='Github'
+              clickable
+              component='a'
+              href='https://github.com/zluo16/the-question-game'
+              avatar={
+                <Avatar>
+                  <CodeIcon />
+                </Avatar>
+              }
+            />
+          </div>
+        </Grid>
+        <Grid item xs></Grid>
+      </Grid>
+    );
+  };
+};
+  
 Leaderboard.propTypes = {
-    classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(leaderbaordStyles)(Leaderboard);

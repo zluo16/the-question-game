@@ -11,45 +11,45 @@ import startPageStyles from './styles/startPageStyles';
 import createHashHistory from 'history/createHashHistory';
 
 const history = createHashHistory({
-    hashType: 'slash'
+  hashType: 'slash'
 });
 
 class StartPage extends Component {
-    constructor(props) {
-        super(props);
-    };
+  constructor(props) {
+    super(props);
+  };
 
-    handleStart = () => {
-        history.push('/game');
-    };
+  handleStart = () => {
+    history.push('/game');
+  };
 
-    render() {
-        return (
-            <Grid container spacing={24}>
-                <Grid item xs></Grid>
-                <Grid item xs={4}>
-                    <Card className={this.props.classes.card}>
-                        <CardContent className={this.props.classes.content}>
-                            <Typography variant='display1'>Welcome to Multiple Choice Jeopardy!</Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button 
-                                className={this.props.classes.button}
-                                onClick={this.handleStart}
-                                variant='contained'>
-                                Start Game
-                            </Button>
-                        </CardActions>
-                    </Card>
-                </Grid>
-                <Grid item xs></Grid>
-            </Grid>
-        );
-    };
+  render() {
+    return (
+      <Grid container spacing={24}>
+        <Grid item xs></Grid>
+        <Grid item xs={4}>
+          <Card className={this.props.classes.card}>
+            <CardContent className={this.props.classes.content}>
+              <Typography variant='display1'>Welcome to Multiple Choice Jeopardy!</Typography>
+            </CardContent>
+            <CardActions>
+              <Button
+                className={this.props.classes.button}
+                onClick={this.handleStart}
+                variant='contained'>
+                Start Game
+              </Button>
+            </CardActions>
+          </Card>
+        </Grid>
+        <Grid item xs></Grid>
+      </Grid>
+    );
+  };
 };
 
 StartPage.proptypes = {
-    classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(startPageStyles)(StartPage);

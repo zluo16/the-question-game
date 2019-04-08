@@ -22,6 +22,9 @@
 /node_modules
 /yarn-error.log
 
+# Ignore DS Store
+.DS_Store
+
 /public/assets
 .byebug_history
 
